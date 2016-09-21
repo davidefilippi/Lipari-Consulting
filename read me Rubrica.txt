@@ -1,0 +1,6 @@
+Per la realizzazione di questo applicativo ho utilizzato:
+- NetBeans IDE 8.1
+- MySQL Connector Java 5.1.39
+- Database Rubrica (allegato) contenenti le seguenti tabelle:
+    anagrafica
+    numeri

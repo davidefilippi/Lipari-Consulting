@@ -1,0 +1,79 @@
+<!doctype HTML>
+<html>
+  <head>
+  </head>
+  
+  <body>
+    <div id="main"></div>
+    
+    Stringa: <input type="input" id="strInp">
+    <button onclick="window.alert()">Ridefinizione window.alert</button>
+    
+    <div></div>
+  </body>
+  
+  
+  
+  <script>
+    class poligono{
+      constructor(id, nLati){
+        this.id = id;
+        this.nLati = nLati;
+      }
+      
+      stampaNumeroLati(){
+        return this.nLati;        
+      }
+    }
+    
+    class rettangolo extends poligono{
+      constructor(id){
+        super(id, 4);
+      }
+    }
+    
+    var nOggetti = Math.floor(Math.random() * 18 + 2),  // numero random compreso tra 2 e 20.
+        i,                                              // usata per il ciclo for
+        rand,                                           // numero random tra 1 e 2
+        nLati, 
+        btn,
+        descr,
+        obj;
+    
+    for(i = 0; i < nOggetti; i++){
+      rand = Math.floor(Math.random() * 2 + 1); // 1 - genera poligono; 2 - genera rettangolo
+      if(rand == 1) {
+        do{
+          nLati = Math.floor(Math.random() * 7 + 3); // random nel range 3 - 9, indica il numero dei lati          
+        }while(nLati == 4);
+        
+        obj = new poligono(i, nLati);
+        descr = "poligono";
+      }
+      else{
+        descr = "rettangolo";
+        obj = new rettangolo(i);
+      }
+      
+      btn = document.createElement('button');  
+      btn.obj = obj;
+      btn.setAttribute('id',i);   
+      var t = document.createTextNode(descr);
+      btn.addEventListener('click', function() { 
+        console.log(this.obj.stampaNumeroLati()); 
+      });    
+      btn.appendChild(t);
+
+      main.appendChild(btn);
+    }
+    
+    window.alert = function(){
+      
+      var str = document.getElementById('strInp').value;
+      
+      var t = document.createTextNode(str);
+      
+      document.body.appendChild(t);      
+    }
+  </script>
+</html>
